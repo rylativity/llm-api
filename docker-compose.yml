@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  api:
+    build: .
+
+    environment:
+      - MODEL_NAME=TheBloke/Mistral-7B-Instruct-v0.1-GGUF
+      - MODEL_FILE=mistral-7b-instruct-v0.1.Q4_K_M.gguf
+      - TOKENIZER_MODEL_NAME=TheBloke/Mistral-7B-Instruct-v0.1-GPTQ
+    ports:
+        - 8000:8000
+    volumes:
+      - ~/.cache/:/root/.cache/
+      - ./src/:/app/src/
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

@@ -1,0 +1,8 @@
+huggingface_hub
+fastapi
+uvicorn
+python-multipart
+transformers
+langchain
+torch
+auto-gptq
